@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+	http_basic_authenticate_with name: "chris", password: "lovewhatyoudo", except: [:index, :show]
+	
 	def index
 		@recipes = Recipe.all
 	end
