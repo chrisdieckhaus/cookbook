@@ -1,8 +1,19 @@
 class RecipesController < ApplicationController
+	def show
+		@recipe = Recipe.find(params[:id])
+	end
+	
 	def new
 	end
 
 	def create
-		render plain: params[:recipe].inspect
+		@recipe = Recipe.new(recipe_params)
+		@recipe.save
+		redirect_to @recipe
 	end
+
+	private
+		def recipe_params
+	    	params.require(:recipe).permit(:title, :rating, :ingredients, :directions)
+		end
 end

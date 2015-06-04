@@ -1,0 +1,10 @@
+%h1= @recipe.title
+%p= "Rating: #{@recipe.rating}"
+
+%h2 Ingredients
+%ul
+	- @recipe.ingredients.split(",").each do |ingred|
+		%li= ingred
+
+%h2 Directions
+%p= @recipe.directions
