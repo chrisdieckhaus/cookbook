@@ -1,0 +1,7 @@
+%h1 All Recipes
+
+= link_to 'Add Recipe', new_recipe_path
+
+%ul
+	- @recipes.each do |r|
+		%li= r.title
