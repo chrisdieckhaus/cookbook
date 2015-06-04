@@ -1,6 +1,7 @@
-%h1 All Recipes
+.container
+	%h1 All Recipes
 
-= button_to 'Add Recipe', new_recipe_path, method: :get
+= button_to 'Add Recipe', new_recipe_path, method: :get, :class => "btn btn-primary"
 
 %ul
 	- @recipes.each do |r|
