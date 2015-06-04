@@ -8,3 +8,7 @@
 
 %h2 Directions
 %p= @recipe.directions
+
+= button_to 'Edit Recipe', edit_recipe_path(@recipe), method: :get
+%br
+= button_to 'Delete Recipe', recipe_path(@recipe), method: :delete

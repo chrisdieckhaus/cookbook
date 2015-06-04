@@ -1,7 +1,8 @@
 %h1 All Recipes
 
-= link_to 'Add Recipe', new_recipe_path
+= button_to 'Add Recipe', new_recipe_path, method: :get
 
 %ul
 	- @recipes.each do |r|
-		%li= r.title
+		%li
+			= link_to r.title, recipe_path(r)
