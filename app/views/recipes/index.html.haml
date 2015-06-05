@@ -1,9 +1,16 @@
 .container
-	%h1 All Recipes
+	.row
+		.col-md-6.col-sm-12
+			%h1 All Recipes
+		.col-md-6.col-sm-12
+			%h1
+				= button_to 'Add Recipe', new_recipe_path, method: :get, :class => "btn btn-primary"
 
-= button_to 'Add Recipe', new_recipe_path, method: :get, :class => "btn btn-primary"
-
-%ul
-	- @recipes.each do |r|
-		%li
-			= link_to r.title, recipe_path(r)
+.container
+	.row
+		.col-md-8.col-sm-12
+			%ul.list-group
+				- @recipes.each do |r|
+					%li.list-group-item
+						%span.badge= "#{r.rating} stars"
+						= link_to r.title, recipe_path(r)
