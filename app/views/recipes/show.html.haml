@@ -1,5 +1,9 @@
-%h1= @recipe.title
-%p= "Rating: #{@recipe.rating}"
+.container
+	.row
+		.col-md-9.col-sm-12{:style=>"border: solid black 1pt"}
+			%h1= @recipe.title
+		.col-md-3.col-sm-12{:style=>"border: solid black 1pt"}
+			%p= "Rating: #{@recipe.rating}"
 
 %h2 Ingredients
 %ul
