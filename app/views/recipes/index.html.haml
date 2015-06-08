@@ -11,28 +11,29 @@
 		.col-md-3.col-sm-12
 			%h1
 				= button_to 'Add Recipe', new_recipe_path, method: :get, :class => "btn btn-primary", :style=>"float: right;"
+	<hr>
+/
+	.container
+		.row
+			.col-md-12.col-sm-12
+				%ul.list-group
+					- @recipes.each do |r|
+						%li.list-group-item
+							= link_to r.title, recipe_path(r)
+							%span.badge= "#{r.rating} stars"
 
-.container
-	.row
-		.col-md-12.col-sm-12
-			%ul.list-group
-				- @recipes.each do |r|
-					%li.list-group-item
-						= link_to r.title, recipe_path(r)
-						%span.badge= "#{r.rating} stars"
 
-
-.container
-	.row
-		.col-md-12.col-sm-12
-			.list-group
-				- @recipes.each do |r|
-					%a{:href=>recipe_path(r), :class=>"list-group-item"} 
-						%span.badge= "#{r.rating} stars"
-						%h4.list-group-item-heading{:style=>"color: #337ab7;"}
-							%strong= r.title
-						%p.list-group-item-text= r.ingredients
-						
+	.container
+		.row
+			.col-md-12.col-sm-12
+				.list-group
+					- @recipes.each do |r|
+						%a{:href=>recipe_path(r), :class=>"list-group-item"} 
+							%span.badge= "#{r.rating} stars"
+							%h4.list-group-item-heading{:style=>"color: #337ab7;"}
+								%strong= r.title
+							%p.list-group-item-text= r.ingredients
+					
 .container
 	.row
 		.col-md-12.col-sm-12
