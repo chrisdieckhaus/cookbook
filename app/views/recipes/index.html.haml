@@ -1,13 +1,13 @@
 - @title = "Cookbook | Home"
 
 .container
-	.row
+	.row{:style=>"display:flex;"}
 		.col-md-3.col-sm-12
 			%h1 All Recipes
 		.col-md-6.col-sm-12
-			%form.navbar-form{:role=>"search"}
+			%form.navbar-form{:role=>"search", :style=>"margin-top: 20px;"}
 			.input-group
-				%input.form-control{:placeholder=>"This alignment needs to be fixed.", :type=>"text"}
+				%input.form-control{:placeholder=>"Search", :type=>"text"}
 				.input-group-btn
 					%button.btn.btn-default{:type=>"submit"} Go
 		.col-md-3.col-sm-12
@@ -21,7 +21,7 @@
 			.list-group
 				- @recipes.each do |r|
 					%a{:href=>recipe_path(r), :class=>"list-group-item"} 
-						%span.badge= "#{r.rating} stars"
+						%span.badge= "#{r.avg_rating} stars"
 						%h4.list-group-item-heading{:style=>"color: #337ab7;"}
 							%strong= r.title
 						%p.list-group-item-text{:style=>"width: 80%;overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"}= r.ingredients
