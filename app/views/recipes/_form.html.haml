@@ -5,23 +5,19 @@
 				%ul
 					- @recipe.errors.full_messages.each do |msg|
 						%li= msg
-			.col-md-8
+			.col-md-12
 				.form-group
 					%h3= f.label :title
 					= f.text_field :title, :placeholder => 'Enter recipe name', :class =>"form-control"
-			.col-md-4
-				.form-group
-					%h3= f.label :rating
-					= f.number_field :rating, in: 1..5, :placeholder => '1 to 5', :class =>"form-control"
 			%br
 			.col-md-4.col-sm-12
 				.form-group
 					%h3= f.label :ingredients
-					= f.text_area :ingredients, :placeholder => 'Separate each ingredient with a comma', :class =>"form-control", :style =>"height: 275px;"
+					= f.text_area :ingredients, :placeholder => 'Separate each ingredient with a comma', :class =>"form-control", :rows=>10
 			.col-md-8.col-sm-12
 				.form-group
 					%h3= f.label :directions
-					= f.text_area :directions, :class =>"form-control", :style =>"height: 275px;"
+					= f.text_area :directions, :class =>"form-control", :rows=>10
 		.row
 			.col-md-6.col-sm-12
 				.btn-group
