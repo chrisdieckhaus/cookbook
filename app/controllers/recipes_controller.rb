@@ -10,6 +10,7 @@ class RecipesController < ApplicationController
 	end
 
 	def new
+		@recipe = Recipe.new
 	end
 
 	def edit
@@ -27,9 +28,11 @@ class RecipesController < ApplicationController
 
 	def update
 		@recipe = Recipe.find(params[:id])
-		if @recipe.save
+		if @recipe.update(recipe_params)
+			puts "Saved"
 			redirect_to @recipe
 		else
+			puts "Did not save"
 			render 'edit'
 		end
 	end
