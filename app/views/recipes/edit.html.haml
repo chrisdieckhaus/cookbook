@@ -2,33 +2,28 @@
 	.row
 		.col-md-12.col-sm-12
 			%h1= "Edit #{@recipe.title}"
-
-	<hr>
-
-
-.container
 	= form_for :recipe, url: recipe_path(@recipe), method: :patch do |f|
 		.row
 			- if @recipe && @recipe.errors.any?
-				%ul
+				.alert.alert-danger
 					- @recipe.errors.full_messages.each do |msg|
-						%li= msg
+						%p= msg
 			.col-md-8
 				.form-group
-					%h2= f.label :title
+					%h3= f.label :title
 					= f.text_field :title, :placeholder => 'Enter recipe name', :class =>"form-control"
 			.col-md-4
 				.form-group
-					%h2= f.label :rating
+					%h3= f.label :rating
 					= f.number_field :rating, in: 1..5, :placeholder => '1 to 5', :class =>"form-control"
 			%br
 			.col-md-4.col-sm-12
 				.form-group
-					%h2= f.label :ingredients
+					%h3= f.label :ingredients
 					= f.text_area :ingredients, :placeholder => 'Separate each ingredient with a comma', :class =>"form-control", :style =>"height: 275px;"
 			.col-md-8.col-sm-12
 				.form-group
-					%h2= f.label :directions
+					%h3= f.label :directions
 					= f.text_area :directions, :class =>"form-control", :style =>"height: 275px;"
 		.row
 			.col-md-6.col-sm-12
@@ -36,7 +31,7 @@
 					= link_to 'Cancel', recipe_path(@recipe), method: :get, :class => "btn btn-default"
 					= f.submit :class =>"btn btn-primary"
 			.col-md-6.col-sm-12.pull-right
-				= button_to 'Delete Recipe', recipe_path(@recipe), method: :delete, :class => "btn btn-danger pull-right", :role=>"button"
+
 
 
 
