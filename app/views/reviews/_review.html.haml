@@ -1,9 +1,23 @@
-%h3 Reviews
-- if @recipe.reviews.count == 0
-	%p No one has added a review yet.
-- else
-	- @recipe.reviews.each do |review|
-		%p= review.reviewer
-		%p= review.rating
-		%p= review.body
-		= button_to 'Destroy Review', [review.recipe, review], method: :delete
+.col-md-12
+	%h3 Reviews
+	%h4
+		%span.label.label-warning
+			Average rating: 
+			= pluralize(@recipe.avg_rating, 'star')
+		
+
+.col-md-12
+	- if @recipe.reviews.count == 0
+		%p No one has added a review yet.
+	- else
+		- reviews = @recipe.reviews.order('reviews.created_at DESC')
+		- reviews.each do |review|
+			.panel.panel-default{:style=>"margin-bottom: 20px;"}
+				.panel-heading
+					%span.badge.pull-right= pluralize(review.rating, 'star')
+					%h4.panel-title
+						%strong Name: 
+						= "#{review.reviewer}"
+				.panel-body
+					- body = simple_format(review.body, :style=>"line-height: 150%; margin-bottom: 20px;")
+					%p= body
