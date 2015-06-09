@@ -26,3 +26,5 @@
 		= f.submit
 
 = link_to 'Back', recipes_path
+
+= button_to 'Delete Recipe', recipe_path(@recipe), method: :delete, :class => "btn btn-danger pull-right", :role=>"button"

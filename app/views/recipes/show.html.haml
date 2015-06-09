@@ -24,11 +24,4 @@
 				= link_to 'Back to recipes', recipes_path, method: :get, :class => "btn btn-primary"
 				= link_to 'Edit recipe', edit_recipe_path(@recipe), method: :get, :class => "btn btn-default"
 
-= button_to 'Delete Recipe', recipe_path(@recipe), method: :delete, :class => "btn btn-danger pull-right", :role=>"button"
-/
-	.btn-group
-		= button_to 'Back', recipes_path(@recipe), method: :get, :class => "btn btn-primary pull-right", :role=>"button"
-		= button_to 'Edit Recipe', edit_recipe_path(@recipe), method: :get, :class => "btn btn-warning pull-right", :role=>"button"
-		= button_to 'Delete Recipe', recipe_path(@recipe), method: :delete, :class => "btn btn-danger pull-right", :role=>"button"
-
 
