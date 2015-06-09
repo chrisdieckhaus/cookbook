@@ -4,8 +4,8 @@
 	.row
 		.col-md-12.col-sm-12
 			%h1= "Edit #{@recipe.title}"
-	= form_for :recipe, url: recipe_path(@recipe), method: :patch do |f|
-		.row
+	.row
+		= form_for :recipe, url: recipe_path(@recipe), method: :patch do |f|
 			- if @recipe && @recipe.errors.any?
 				.alert.alert-danger
 					- @recipe.errors.full_messages.each do |msg|
@@ -27,13 +27,15 @@
 				.form-group
 					%h3= f.label :directions
 					= f.text_area :directions, :class =>"form-control", :style =>"height: 275px;"
-		.row
 			.col-md-6.col-sm-12
 				.btn-group
 					= link_to 'Cancel', recipe_path(@recipe), method: :get, :class => "btn btn-default"
 					= f.submit :class =>"btn btn-primary"
-			.col-md-6.col-sm-12.pull-right
-				
+%br
+.container
+	.row
+		.col-md-6.col-sm-12
+			= button_to 'Delete Recipe', recipe_path(@recipe), method: :delete, :class => "btn btn-danger", :confirm=>"Really?"
 
 
 

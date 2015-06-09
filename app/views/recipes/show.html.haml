@@ -2,13 +2,12 @@
 
 .container
 	.row{:style=>"display:flex;"}
-		.col-md-8.col-sm-12
+		.col-md-7.col-sm-12
 			%h1= @recipe.title
-		.col-md-4.col-sm-12
-			.btn-group{:style=>"margin-top: 20px;"}
+		.col-md-5.col-sm-12
+			.btn-group.pull-right{:style=>"margin-top: 20px; display: inline;"}
 				= link_to 'Back to recipes', recipes_path, method: :get, :class => "btn btn-default"
 				= link_to 'Edit recipe', edit_recipe_path(@recipe), method: :get, :class => "btn btn-primary"
-				= button_to 'Delete Recipe', recipe_path(@recipe), method: :delete, :class => "btn btn-danger"
 .container
 	.row
 		.col-md-4.col-sm-12
@@ -19,7 +18,9 @@
 		.col-md-8.col-sm-12
 			%h3 Directions
 			- text = simple_format(@recipe.directions, :style=>"line-height: 150%; margin-bottom: 20px;")
-			%p= text
+			.panel.panel-default
+				.panel-body
+					%p= text
 	<hr>
 .container
 	.row
