@@ -1,30 +1,42 @@
-%h1= "Edit #{@recipe.title}"
+.container
+	.row
+		.col-md-12.col-sm-12
+			%h1= "Edit #{@recipe.title}"
 
-= form_for :recipe, url: recipe_path(@recipe), method: :patch do |f|
-	- if @recipe && @recipe.errors.any?
-		%ul
-			- @recipe.errors.full_messages.each do |msg|
-				%li= msg
+	<hr>
 
-	%p
-		= f.label :title
-		%br
-		= f.text_field :title, :placeholder => 'Enter recipe name'
-	%p
-		= f.label :rating
-		%br
-		= f.number_field :rating, in: 1..5, :placeholder => '1 to 5'
-	%p
-		= f.label :ingredients
-		%br
-		= f.text_area :ingredients, :rows => 5, :cols => 50, :placeholder => 'Separate each ingredient with a comma'
-		%br
-		= f.label :directions
-		%br
-		= f.text_area :directions, :rows => 10, :cols => 50
-	%p
-		= f.submit
 
-= link_to 'Back', recipes_path
+.container
+	= form_for :recipe, url: recipe_path(@recipe), method: :patch do |f|
+		.row
+			- if @recipe && @recipe.errors.any?
+				%ul
+					- @recipe.errors.full_messages.each do |msg|
+						%li= msg
+			.col-md-8
+				.form-group
+					%h2= f.label :title
+					= f.text_field :title, :placeholder => 'Enter recipe name', :class =>"form-control"
+			.col-md-4
+				.form-group
+					%h2= f.label :rating
+					= f.number_field :rating, in: 1..5, :placeholder => '1 to 5', :class =>"form-control"
+			%br
+			.col-md-4.col-sm-12
+				.form-group
+					%h2= f.label :ingredients
+					= f.text_area :ingredients, :placeholder => 'Separate each ingredient with a comma', :class =>"form-control", :style =>"height: 275px;"
+			.col-md-8.col-sm-12
+				.form-group
+					%h2= f.label :directions
+					= f.text_area :directions, :class =>"form-control", :style =>"height: 275px;"
+		.row
+			.col-md-6.col-sm-12
+				.btn-group
+					= link_to 'Cancel', recipe_path(@recipe), method: :get, :class => "btn btn-default"
+					= f.submit :class =>"btn btn-primary"
+			.col-md-6.col-sm-12.pull-right
+				= button_to 'Delete Recipe', recipe_path(@recipe), method: :delete, :class => "btn btn-danger pull-right", :role=>"button"
 
-= button_to 'Delete Recipe', recipe_path(@recipe), method: :delete, :class => "btn btn-danger pull-right", :role=>"button"
+
+

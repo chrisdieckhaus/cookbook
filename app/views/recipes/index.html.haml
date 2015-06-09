@@ -12,6 +12,21 @@
 			%h1
 				= button_to 'Add Recipe', new_recipe_path, method: :get, :class => "btn btn-primary", :style=>"float: right;"
 	<hr>
+
+.container
+	.row
+		.col-md-12.col-sm-12
+			.list-group
+				- @recipes.each do |r|
+					%a{:href=>recipe_path(r), :class=>"list-group-item", :style=>"color: #337ab7;"} 
+						- if r.rating
+							%span.badge= "#{r.rating} stars"
+						- else
+							%span.badge= "Not rated"
+						%strong{:style=>"font-size: 16px;"}= r.title
+
+
+
 /
 	.container
 		.row
@@ -23,22 +38,14 @@
 							%span.badge= "#{r.rating} stars"
 
 
-	.container
-		.row
-			.col-md-12.col-sm-12
-				.list-group
-					- @recipes.each do |r|
-						%a{:href=>recipe_path(r), :class=>"list-group-item"} 
-							%span.badge= "#{r.rating} stars"
-							%h4.list-group-item-heading{:style=>"color: #337ab7;"}
-								%strong= r.title
-							%p.list-group-item-text= r.ingredients
-					
 .container
 	.row
 		.col-md-12.col-sm-12
 			.list-group
 				- @recipes.each do |r|
-					%a{:href=>recipe_path(r), :class=>"list-group-item", :style=>"color: #337ab7;"} 
+					%a{:href=>recipe_path(r), :class=>"list-group-item"} 
 						%span.badge= "#{r.rating} stars"
-						%strong{:style=>"font-size: 16px;"}= r.title
+						%h4.list-group-item-heading{:style=>"color: #337ab7;"}
+							%strong= r.title
+						%p.list-group-item-text{:style=>"width: 80%;overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"}= r.ingredients
+					
