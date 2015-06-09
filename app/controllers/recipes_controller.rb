@@ -7,6 +7,7 @@ class RecipesController < ApplicationController
 
 	def show
 		@recipe = Recipe.find(params[:id])
+		puts "SHOWING_______________________________________"
 	end
 
 	def new
@@ -38,7 +39,7 @@ class RecipesController < ApplicationController
 	def destroy
     	@recipe = Recipe.find(params[:id])
     	@recipe.destroy
- 
+ 		puts "DESTROYINGGGGGGG-------------------------------------------------"
     	redirect_to recipes_path
   	end
 

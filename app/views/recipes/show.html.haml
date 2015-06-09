@@ -1,12 +1,17 @@
 - @title = "#{@recipe.title}"
 
 .container
-	.row
-		.col-md-12.col-sm-12
+	.row{:style=>"display:flex;"}
+		.col-md-8.col-sm-12
 			%h1= @recipe.title
+		.col-md-4.col-sm-12
+			.btn-group{:style=>"margin-top: 20px;"}
+				= link_to 'Back to recipes', recipes_path, method: :get, :class => "btn btn-default"
+				= link_to 'Edit recipe', edit_recipe_path(@recipe), method: :get, :class => "btn btn-primary"
+				= button_to 'Delete Recipe', recipe_path(@recipe), method: :delete, :class => "btn btn-danger"
 .container
 	.row
-		.col-md-3.col-sm-12
+		.col-md-4.col-sm-12
 			%h3 Ingredients
 			.list-group
 				- @recipe.ingredients.split(",").each do |ingred|
@@ -15,12 +20,23 @@
 			%h3 Directions
 			- text = simple_format(@recipe.directions, :style=>"line-height: 150%; margin-bottom: 20px;")
 			%p= text
-
+	<hr>
 .container
 	.row
-		.col-md-12.col-sm-12
-			.btn-group
-				= link_to 'Back to recipes', recipes_path, method: :get, :class => "btn btn-default"
-				= link_to 'Edit recipe', edit_recipe_path(@recipe), method: :get, :class => "btn btn-primary"
+		.col-md-4.col-sm-12.text-center
+			= render 'add_review'
+		.col-md-8.col-sm-12
+			%h3 Reviews
+			- if @recipe.reviews.count == 0
+				%p No one has added a review yet.
+			- else
+				- @recipe.reviews.each do |review|
+					%p= review.reviewer
+					%p= review.rating
+					%p= review.body
+					= button_to 'Destroy Review', [review.recipe, review], method: :delete
+
+
+		
 
 

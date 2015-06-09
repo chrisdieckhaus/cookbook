@@ -1,0 +1,9 @@
+%h3 Reviews
+- if @recipe.reviews.count == 0
+	%p No one has added a review yet.
+- else
+	- @recipe.reviews.each do |review|
+		%p= review.reviewer
+		%p= review.rating
+		%p= review.body
+		= button_to 'Destroy Review', [review.recipe, review], method: :delete
