@@ -20,31 +20,6 @@
 		.col-md-12.col-sm-12
 			.list-group
 				- @recipes.each do |r|
-					%a{:href=>recipe_path(r), :class=>"list-group-item", :style=>"color: #337ab7;"} 
-						- if r.rating
-							%span.badge= "#{r.rating} stars"
-						- else
-							%span.badge= "Not rated"
-						%strong{:style=>"font-size: 16px;"}= r.title
-
-
-
-/
-	.container
-		.row
-			.col-md-12.col-sm-12
-				%ul.list-group
-					- @recipes.each do |r|
-						%li.list-group-item
-							= link_to r.title, recipe_path(r)
-							%span.badge= "#{r.rating} stars"
-
-
-.container
-	.row
-		.col-md-12.col-sm-12
-			.list-group
-				- @recipes.each do |r|
 					%a{:href=>recipe_path(r), :class=>"list-group-item"} 
 						%span.badge= "#{r.rating} stars"
 						%h4.list-group-item-heading{:style=>"color: #337ab7;"}
