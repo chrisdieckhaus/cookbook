@@ -5,10 +5,14 @@
 				%ul
 					- @recipe.errors.full_messages.each do |msg|
 						%li= msg
-			.col-md-12
+			.col-md-6
 				.form-group
 					%h3= f.label :title
 					= f.text_field :title, :placeholder => 'Enter recipe name', :class =>"form-control"
+			.col-md-6
+				.form-group
+					%h3= f.label :category
+					= f.text_field :category, :placeholder => 'Enter category', :class =>"form-control"
 			%br
 			.col-md-4.col-sm-12
 				.form-group

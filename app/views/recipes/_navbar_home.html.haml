@@ -1,0 +1,16 @@
+%nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      .navbar-brand All Recipes
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        %li#add
+          = button_to 'Add Recipe', new_recipe_path, method: :get, :class=>"btn btn-default navbar-btn"
+        %li
+          %form.navbar-form{:role=>"search"}
+            .form-group
+            .input-group
+              %input.form-control{:placeholder=>"Search", :type=>"text"}
+              .input-group-btn
+                %button.btn.btn-default{:type=>"submit"} Go
+      
