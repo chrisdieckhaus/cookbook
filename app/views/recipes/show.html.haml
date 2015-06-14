@@ -1,35 +1,35 @@
 - @title = "#{@recipe.title}"
 - @id = "recipe-show"
 
-.container
-	.row{:style=>"display:flex;"}
-		.col-md-7.col-sm-12
-			%h1= @recipe.title
-		.col-md-5.col-sm-12
-			.btn-group.pull-right{:style=>"margin-top: 20px; display: inline;"}
-				= link_to 'Back to recipes', recipes_path, method: :get, :class => "btn btn-default"
-				= link_to 'Edit recipe', edit_recipe_path(@recipe), method: :get, :class => "btn btn-primary"
+.pull-left{:style=>"margin-top: 15px;"}
+	= link_to 'BACK', recipes_path, method: :get, style: "margin-left: 25px;"
+.pull-right{:style=>"margin-top: 15px;"}
+	= link_to 'EDIT', edit_recipe_path(@recipe), method: :get, style: "margin-right: 25px;"
 .container
 	.row
-		.col-md-4.col-sm-12
-			%h3 Ingredients
-			.list-group
-				- @recipe.ingredients.split(",").each do |ingred|
-					.list-group-item= ingred
-		.col-md-8.col-sm-12
-			%h3 Directions
-			- text = simple_format(@recipe.directions, :style=>"line-height: 150%; margin-bottom: 20px;")
-			.panel.panel-default
-				.panel-body
-					%p= text
-	<hr>
+		.col-md-12{:style=>"text-align:center;"}
+			%h1= @recipe.title.downcase
+	.row
+		.col-md-12{:style=>"text-align:center;"}
+			%p= "Serves 4".upcase
 .container
 	.row
-		.col-md-8.col-sm-12
-			= render 'reviews/review'
-		.col-md-4.col-sm-12.text-center
-			= render 'add_review'
-		
+		.col-md-6.col-sm-12
+			.col-md-12{:style=>"text-align:center;"}
+				%h3 ingredients
+			.col-md-2
+			.col-md-8
+				%ul
+					- @recipe.ingredients.split(",").each do |ingred|
+						%li= ingred.downcase
+			.col-md-2
+		.col-md-6.col-sm.12
+			.col-md-12{:style=>"text-align:center;"}
+				%h3 directions
+			.col-md-2
+			.col-md-8{:style=>"text-align: left;"}
+				%p= simple_format(@recipe.directions)
+			.col-md-2
 							
 
 
