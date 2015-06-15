@@ -1,10 +1,14 @@
-= form_for([@recipe, @recipe.reviews.build]) do |f|
-	.form-group.text-left
-		%h3= f.label 'Add a review'
-		= f.text_field :reviewer, :placeholder => 'Name', :class =>"form-control"
-	.form-group.text-left
-		= f.number_field :rating, in: 1..5, :placeholder => 'Rating', :class =>"form-control"
-	.form-group
-		= f.text_area :body, :class =>"form-control", :style =>"height: 275px;", :placeholder =>"What did you think?"
-	.btn-group
-		= f.submit :class =>"btn btn-primary"
+.col-md-3
+.col-md-6
+	= form_for([@recipe, @recipe.reviews.build]) do |f|
+		.form-group.text-left
+			%h4#add= f.label 'add a review'
+			= f.text_field :reviewer, :placeholder => 'Name', :class =>"form-control"
+		.rev#forms
+			.form-group.text-left
+				= f.number_field :rating, in: 1..5, :placeholder => 'Rating', :class =>"form-control"
+			.form-group
+				= f.text_area :body, :class =>"form-control", :rows => 5, :placeholder =>"What did you think?"
+			.btn-group
+				= f.submit :class =>"btn-mysubmit"
+.col-md-3

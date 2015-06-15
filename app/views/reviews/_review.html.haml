@@ -1,24 +1,29 @@
-.col-md-12
-	%h3 Reviews
-	%h4
+.col-md-12{style: "text-align: center"}
+	%h4 
+		reviews
+		%span#add +
+	%p
 		%span.label.label-warning
-			Average rating: 
+			average rating: 
 			= pluralize(@recipe.avg_rating, 'star')
 		
 
-.col-md-12
-	- if @recipe.reviews.count == 0
+- if @recipe.reviews.count == 0
+	.col-md-12{style:"text-align:center; margin-bottom:30px;"}
 		%p No one has added a review yet.
-	- else
-		- reviews = @recipe.reviews.order('reviews.created_at DESC')
-		- reviews.each do |review|
-			.panel.panel-default{:style=>"margin-bottom: 20px;"}
-				.panel-heading
-					%span.badge.pull-right= pluralize(review.rating, 'star')
-					%h4.panel-title
-						%strong Name: 
-						= "#{review.reviewer}"
-				.panel-body
-					- body = simple_format(review.body, :style=>"line-height: 150%; margin-bottom: 20px;")
-					%p= body
-					= button_to 'Remove Review', [review.recipe, review], method: :delete, :class => "btn btn-danger btn-xs"
+		.add-div
+			= render "add_review"
+- else
+	.col-md-12{style:"text-align:center; margin-bottom:30px;"}
+		.add-div
+			= render "add_review"
+	.col-md-12
+		.col-md-3.col-sm-0
+		.col-md-6.col-sm-12
+			- reviews = @recipe.reviews.order('reviews.created_at DESC')
+			- reviews.each do |review|
+				%h4{:style=>"font-size:20px;"}= review.reviewer.downcase
+				- body = simple_format(review.body, :style=>"line-height: 150%; margin-bottom: 20px;")
+				%p= body
+				= button_to 'Remove Review', [review.recipe, review], method: :delete, :class => "btn btn-danger btn-xs"
+		.col-md-3.col-sm-0

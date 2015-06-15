@@ -12,24 +12,30 @@
 	.row
 		.col-md-12{:style=>"text-align:center;"}
 			%p= "Serves 4".upcase
-.container
+.container{:style=>"margin-top: 25px;"}
 	.row
 		.col-md-6.col-sm-12
 			.col-md-12{:style=>"text-align:center;"}
 				%h3 ingredients
 			.col-md-2
-			.col-md-8
-				%ul
+			.col-md-8.pull-right
+				%p
 					- @recipe.ingredients.split(",").each do |ingred|
 						%li= ingred.downcase
 			.col-md-2
 		.col-md-6.col-sm.12
 			.col-md-12{:style=>"text-align:center;"}
 				%h3 directions
-			.col-md-2
-			.col-md-8{:style=>"text-align: left;"}
+			.col-md-1
+			.col-md-10{:style=>"text-align: left;"}
 				%p= simple_format(@recipe.directions)
-			.col-md-2
+			.col-md-1
+.container
+	.row
+		<hr>
+	.row{:style=>"padding-bottom: 50px;"}
+		= render 'reviews/review'
+
 							
 
 
