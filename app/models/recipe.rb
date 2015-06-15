@@ -3,11 +3,11 @@ class Recipe < ActiveRecord::Base
 	validates :title, presence: true
 	validates :ingredients, presence: true
 	validates :directions, presence: true
-	validates :category, presence: true
+	#validates :category, presence: true
 
 	def avg_rating
 		if self.reviews.count.to_f == 0
-			return "Not reviewed"
+			return "not reviewed"
 		end
 		sum = 0
 		self.reviews.each do |review|

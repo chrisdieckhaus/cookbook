@@ -3,12 +3,12 @@
 	= form_for([@recipe, @recipe.reviews.build]) do |f|
 		.form-group.text-left
 			%h4#add= f.label 'add a review'
-			= f.text_field :reviewer, :placeholder => 'Name', :class =>"form-control"
+			= f.text_field :reviewer, :placeholder => 'name', :class =>"form-control"
 		.rev#forms
 			.form-group.text-left
-				= f.number_field :rating, in: 1..5, :placeholder => 'Rating', :class =>"form-control"
+				= f.number_field :rating, in: 1..5, :placeholder => 'rating', :class =>"form-control"
 			.form-group
-				= f.text_area :body, :class =>"form-control", :rows => 5, :placeholder =>"What did you think?"
-			.btn-group
+				= f.text_area :body, :class =>"form-control", :rows => 3, :placeholder =>"what did you think?"
+			.btn-group.pull-left#add
 				= f.submit :class =>"btn-mysubmit"
 .col-md-3
