@@ -28,6 +28,7 @@ li#add a:hover{
 
 #recipe-show p{
 	font-family: 'Open Sans';
+	font-size: 14px;
 	letter-spacing: .65px;
 }
 
@@ -54,4 +55,58 @@ li#add a:hover{
 	color: #333;
 	text-decoration: none;
 	border-bottom: solid #333 1pt;
+}
+
+#recipe-show h4{
+	font-family: 'Vollkorn';
+	font-size: 24px;
+	padding-top: 25px;
+}
+
+#recipe-show span.label{
+	font-size: 12px;
+}
+
+#recipe-show label{
+	text-transform: lowercase;
+	font-size: 20px;
+}
+
+textarea{
+	font-family: 'Open Sans';
+	letter-spacing: .5px;
+}
+
+input{
+	font-family: 'Open Sans';
+	letter-spacing: .5px;
+}
+
+.btn-mysubmit{
+	background: none;
+	border: none;
+	border-bottom: solid #fff 1pt;
+	color: #757575;
+	font-family: 'Open Sans';
+	letter-spacing: .65px;
+	text-transform: uppercase;
+}
+
+.btn-mysubmit:hover{
+	color: #333;
+	border-bottom: solid #333 1pt;
+}
+
+input.btn-mysubmit{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+textarea.form-control, input.form-control{
+	border: none;
+	box-shadow: none;
+}
+
+#add{
+	padding-left: 12px;
 }
