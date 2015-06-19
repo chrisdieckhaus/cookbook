@@ -1,23 +1,23 @@
 - @title = "Cookbook | Home"
 - @id = "home"
 
-= render 'navbar_home'
-
+.pull-right{:style=>"margin-top: 15px;"}
+	= button_to 'ADD RECIPE', new_recipe_path, method: :get, style: "margin-right: 25px;", :class=>"btn btn-mysubmit"
 .container
 	.row
-		.col-md-12.col-sm-12
-			.list-group
-				- @recipes.each do |r|
-					%a.list-group-item{:href=>recipe_path(r)} 
-						%span.badge 
-							- if r.avg_rating.class == Float
-								= "#{r.avg_rating} stars"
-							- else 
-								= r.avg_rating
-						.col-md-6
-							%h4.list-group-item-heading
-								%strong= r.title
-						.col-md-6
-							= r.category
-						%p.list-group-item-text= r.ingredients
-					
+		.col-md-12{:style=>"text-align:center;"}
+			%h1 cookbook
+.container{:style=>"margin-top: 25px;"}
+	.row
+		- @recipes.each do |r|
+			.col-md-6.col-sm-12{:style=>"text-align:right;"}
+				%li
+					%a{:href=>recipe_path(r)}= r.title.downcase
+			.col-md-6.col-sm-12{:style=>"text-align:left;"}
+				%li
+					%a#fake
+						- if r.avg_rating.class == Float
+							= pluralize(r.avg_rating, 'star')
+						- else 
+							= r.avg_rating
+	.row
