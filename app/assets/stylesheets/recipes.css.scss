@@ -38,6 +38,7 @@ a{
 	color: #757575;
 	font-family: 'Open Sans';
 	letter-spacing: .65px;
+	padding-bottom: 3px;
 }
 
 #home a{
@@ -106,6 +107,8 @@ input{
 	background: none;
 	border: none;
 	border-bottom: solid #fff 1pt;
+	border-radius: 0;
+	padding-bottom: 3px;
 	color: #757575;
 	font-family: 'Open Sans';
 	letter-spacing: .65px;

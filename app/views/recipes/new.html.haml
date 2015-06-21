@@ -1,8 +1,10 @@
 - @title = "New Recipe"
 - @id = "recipe-new"
 
+.pull-left{:style=>"margin-top: 15px;"}
+	= link_to 'CANCEL', recipes_path, method: :get, style: "margin-left: 25px;"
 .container
 	.row
-		.col-md-12.col-sm-12
-			%h1 New Recipe
+		.col-md-12.col-sm-12{:style=>"text-align:center;"}
+			%h1 new recipe
 = render 'form'

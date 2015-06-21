@@ -5,25 +5,16 @@
 				%ul
 					- @recipe.errors.full_messages.each do |msg|
 						%li= msg
-			.col-md-6
-				.form-group
-					%h3= f.label :title
-					= f.text_field :title, :placeholder => 'Enter recipe name', :class =>"form-control"
-			.col-md-6
-				.form-group
-					%h3= f.label :category
-					= f.text_field :category, :placeholder => 'Enter category', :class =>"form-control"
-			%br
-			.col-md-4.col-sm-12
-				.form-group
-					%h3= f.label :ingredients
-					= f.text_area :ingredients, :placeholder => 'Separate each ingredient with a comma', :class =>"form-control", :rows=>10
-			.col-md-8.col-sm-12
-				.form-group
-					%h3= f.label :directions
-					= f.text_area :directions, :class =>"form-control", :rows=>10
-		.row
+			.col-md-3.col-sm-12
 			.col-md-6.col-sm-12
+				.form-group
+					= f.text_field :title, :placeholder => 'title', :class =>"form-control"
+				.form-group
+					= f.text_field :category, :placeholder => 'category', :class =>"form-control"
+				.form-group
+					= f.text_area :ingredients, :placeholder => 'ingredients', :class =>"form-control", :rows=>10
+				.form-group
+					= f.text_area :directions, :placeholder => 'directions', :class =>"form-control", :rows=>10
 				.btn-group
-					= link_to 'Cancel', recipes_path, method: :get, :class => "btn btn-default"
-					= f.submit :class =>"btn btn-primary"
+					= f.submit :class =>"btn btn-mysubmit"
+			.col-md-3.col-sm-12
