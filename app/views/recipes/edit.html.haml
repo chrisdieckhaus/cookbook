@@ -1,42 +1,34 @@
 - @title = "Edit recipe: #{@recipe.title}"
 - @id = "recipe-edit"
 
+.pull-left{:style=>"margin-top: 15px;"}
+	= link_to 'CANCEL', recipes_path, method: :get, style: "margin-left: 25px;"
+.pull-right{:style=>"margin-top: 15px;"}
+	= button_to 'DELETE', recipe_path(@recipe), method: :delete, style: "margin-right: 25px;", :class => "btn btn-mysubmit", :confirm=>"are you sure you want to delete this recipe?"
 .container
 	.row
-		.col-md-12.col-sm-12
-			%h1= "Edit #{@recipe.title}"
+		.col-md-12.col-sm-12{:style=>"text-align:center;"}
+			%h1= @recipe.title.downcase
 	.row
 		= form_for :recipe, url: recipe_path(@recipe), method: :patch do |f|
 			- if @recipe && @recipe.errors.any?
 				.alert.alert-danger
 					- @recipe.errors.full_messages.each do |msg|
 						%p= msg
-			.col-md-8
-				.form-group
-					%h3= f.label :title
-					= f.text_field :title, :placeholder => 'Enter recipe name', :class =>"form-control"
-			.col-md-4
-				.form-group
-					%h3= f.label :rating
-					= f.number_field :rating, in: 1..5, :placeholder => '1 to 5', :class =>"form-control"
-			%br
-			.col-md-4.col-sm-12
-				.form-group
-					%h3= f.label :ingredients
-					= f.text_area :ingredients, :placeholder => 'Separate each ingredient with a comma', :class =>"form-control", :style =>"height: 275px;"
-			.col-md-8.col-sm-12
-				.form-group
-					%h3= f.label :directions
-					= f.text_area :directions, :class =>"form-control", :style =>"height: 275px;"
+			.col-md-3.col-sm-12
 			.col-md-6.col-sm-12
-				.btn-group
-					= link_to 'Cancel', recipe_path(@recipe), method: :get, :class => "btn btn-default"
-					= f.submit :class =>"btn btn-primary"
-%br
-.container
-	.row
-		.col-md-6.col-sm-12
-			= button_to 'Delete Recipe', recipe_path(@recipe), method: :delete, :class => "btn btn-danger", :confirm=>"Really?"
+				.form-group
+					= f.text_field :title, :placeholder => 'title', :class =>"form-control"
+				.form-group
+					= f.text_field :category, :placeholder => 'category', :class =>"form-control"
+				.form-group
+					= f.text_area :ingredients, :placeholder => 'ingredients', :class =>"form-control", :rows=>10
+				.form-group
+					= f.text_area :directions, :placeholder => 'directions', :class =>"form-control", :rows=>10
+				%br
+				.btn-group#add
+					= f.submit :class =>"btn btn-mysubmit"
+			
 
 
 
