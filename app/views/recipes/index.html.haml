@@ -3,6 +3,8 @@
 
 .pull-right{:style=>"margin-top: 15px;"}
 	= button_to 'ADD RECIPE', new_recipe_path, method: :get, style: "margin-right: 25px;", :class=>"btn btn-mysubmit"
+%br
+%br
 .container
 	.row
 		.col-md-12{:style=>"text-align:center;"}
@@ -10,14 +12,13 @@
 .container{:style=>"margin-top: 25px;"}
 	.row
 		- @recipes.each do |r|
-			.col-md-6.col-sm-12{:style=>"text-align:right;"}
+			.col-md-6.col-sm-12.text-right-responsive
 				%li
-					%a{:href=>recipe_path(r)}= r.title.downcase
-			.col-md-6.col-sm-12{:style=>"text-align:left;"}
+					%a.text-right{:href=>recipe_path(r)}= r.title.downcase
+			.col-md-6.col-sm-12.text-left-responsive
 				%li
 					%a#fake
 						- if r.avg_rating.class == Float
 							= pluralize(r.avg_rating, 'star')
 						- else 
 							= r.avg_rating
-	.row
