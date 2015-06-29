@@ -38,12 +38,11 @@ class RecipesController < ApplicationController
 	def destroy
     	@recipe = Recipe.find(params[:id])
     	@recipe.destroy
- 		puts "DESTROYINGGGGGGG-------------------------------------------------"
     	redirect_to recipes_path
   	end
 
 	private
 		def recipe_params
-	    	params.require(:recipe).permit(:title, :rating, :ingredients, :directions)
+	    	params.require(:recipe).permit(:title, :rating, :category, :ingredients, :directions)
 		end
 end

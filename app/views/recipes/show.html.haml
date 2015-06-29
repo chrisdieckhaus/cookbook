@@ -9,6 +9,9 @@
 	.row
 		.col-md-12{:style=>"text-align:center;"}
 			%h1= @recipe.title.downcase
+	.row
+		.col-md-12{:style=>"text-align:center;"}
+			%p= @recipe.category.upcase
 .container{:style=>"margin-top: 25px;"}
 	.row
 		.col-md-6.col-sm-12

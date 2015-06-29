@@ -15,10 +15,15 @@
 			.col-md-6.col-sm-12.text-right-responsive
 				%li
 					%a.text-right{:href=>recipe_path(r)}= r.title.downcase
-			.col-md-6.col-sm-12.text-left-responsive
+			.col-md-2.col-sm-4{:style=>"text-align:center;"}
+				%li
+					%a#fake
+						= r.category.upcase
+			.col-md-4.col-sm-8.text-left-responsive
 				%li
 					%a#fake
 						- if r.avg_rating.class == Float
 							= pluralize(r.avg_rating, 'star')
 						- else 
 							= r.avg_rating
+			
