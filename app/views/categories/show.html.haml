@@ -1,6 +1,8 @@
-- @title = "Cookbook | Home"
+- @title = "Cookbook | #{@category.capitalize}"
 - @id = "home"
 
+.pull-left{:style=>"margin-top: 15px;"}
+	= link_to 'BACK', recipes_path, method: :get, style: "margin-left: 25px;", :class => "bt btn-mysubmit"
 .pull-right{:style=>"margin-top: 15px;"}
 	= button_to 'ADD RECIPE', new_recipe_path, method: :get, style: "margin-right: 25px;", :class=>"btn btn-mysubmit"
 %br
@@ -9,21 +11,20 @@
 	.row
 		.col-md-12{:style=>"text-align:center;"}
 			%h1 cookbook
+		.col-md-12{:style=>"text-align:center;"}
+			%a#fake 
+				= @category.upcase
+				RECIPES
 .container{:style=>"margin-top: 25px;"}
 	.row
 		- @recipes.each do |r|
 			.col-md-6.col-sm-12.text-right-responsive
 				%li
 					%a.text-right.recipe{:href=>recipe_path(r)}= r.title.downcase
-			.col-md-2.col-sm-4{:style=>"text-align:center;"}
-				%li
-					%a#fake
-						= link_to r.category.upcase, category_path(r.category)
-			.col-md-4.col-sm-8.text-left-responsive
+			.col-md-6.col-sm-12.text-left-responsive
 				%li
 					%a#fake
 						- if r.avg_rating.class == Float
 							= pluralize(r.avg_rating, 'star')
 						- else 
 							= r.avg_rating
-			

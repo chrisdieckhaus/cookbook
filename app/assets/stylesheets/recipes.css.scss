@@ -41,7 +41,7 @@ a{
 	padding-bottom: 3px;
 }
 
-#home a{
+a.recipe{
 	font-family: 'Vollkorn';
 	letter-spacing: none;
 	font-size: 18px;
@@ -106,24 +106,6 @@ textarea{
 input{
 	font-family: 'Open Sans';
 	letter-spacing: .5px;
-}
-
-.btn-mysubmit{
-	background: none;
-	border: none;
-	border-bottom: solid #fff 1pt;
-	border-radius: 0;
-	padding-bottom: 3px;
-	padding-top: 3px;
-	color: #757575;
-	font-family: 'Open Sans';
-	letter-spacing: .65px;
-	text-transform: uppercase;
-}
-
-.btn-mysubmit:hover{
-	color: #333;
-	border-bottom: solid #333 1pt;
 }
 
 input.btn-mysubmit{
