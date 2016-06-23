@@ -3,6 +3,11 @@ class RecipesController < ApplicationController
 	
 	def index
 		@recipes = Recipe.all
+		if params[:search]
+			@recipes = Recipe.search(params[:search])
+			puts "recipes: #{@recipes}"
+			puts @recipes.present?
+		end
 	end
 
 	def show

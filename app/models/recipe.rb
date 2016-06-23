@@ -16,4 +16,8 @@ class Recipe < ActiveRecord::Base
 		avg = sum.to_f/self.reviews.count.to_f
 		avg
 	end
+
+	def self.search(search)
+		where("title LIKE ? OR ingredients LIKE ?", "%#{search}%", "%#{search}%")
+	end
 end
