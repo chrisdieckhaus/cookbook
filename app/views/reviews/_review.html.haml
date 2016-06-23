@@ -7,7 +7,7 @@
 			- if @recipe.avg_rating.class == Float
 				= pluralize(@recipe.avg_rating.round(2), 'star')
 			- else 
-				= @recipe.avg_rating.round(2)
+				= @recipe.avg_rating
 		
 
 - if @recipe.reviews.count == 0

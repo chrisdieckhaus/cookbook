@@ -23,7 +23,7 @@
 				%li
 					%a#fake
 						- if r.avg_rating.class == Float
-							= pluralize(r.avg_rating, 'star')
+							= pluralize(r.avg_rating.round(2), 'star')
 						- else 
 							= r.avg_rating
 			
