@@ -5,9 +5,9 @@
 		%span#avg-rating
 			average rating: 
 			- if @recipe.avg_rating.class == Float
-				= pluralize(@recipe.avg_rating, 'star')
+				= pluralize(@recipe.avg_rating.round(2), 'star')
 			- else 
-				= @recipe.avg_rating
+				= @recipe.avg_rating.round(2)
 		
 
 - if @recipe.reviews.count == 0
