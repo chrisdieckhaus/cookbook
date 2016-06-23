@@ -11,7 +11,7 @@
 	.row
 		.col-md-8.col-xs-4.center-block{:style=>"text-align:center; float:none;"}
 			= form_tag(recipes_path, :method => "get", id: "search-form") do 
-				= text_field_tag :search, params[:search], placeholder: "Search Recipes", :class =>"search-control"
+				= text_field_tag :search, params[:search], placeholder: "Search recipes or ingredients", :class =>"search-control"
 				= submit_tag "Search", :class =>"btn btn-mysubmit"
 
 

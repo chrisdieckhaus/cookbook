@@ -2,10 +2,17 @@
 - @id = "home"
 
 .pull-left{:style=>"margin-top: 15px;"}
-	= link_to 'BACK', recipes_path, method: :get, style: "margin-left: 25px;", :class => "bt btn-mysubmit"
+	= button_to 'HOME', recipes_path, method: :get, style: "margin-left: 25px;", :class=>"btn btn-mysubmit"
+
 .pull-right{:style=>"margin-top: 15px;"}
 	= button_to 'ADD RECIPE', new_recipe_path, method: :get, style: "margin-right: 25px;", :class=>"btn btn-mysubmit"
 %br
+.container
+	.row
+		.col-md-8.col-xs-4.center-block{:style=>"text-align:center; float:none;"}
+			= form_tag(category_path(@category), :method => "get", id: "search-form") do 
+				= text_field_tag :search, params[:search], placeholder: "Search #{@category} recipes", :class =>"search-control"
+				= submit_tag "Search", :class =>"btn btn-mysubmit"
 %br
 .container
 	.row
@@ -17,14 +24,24 @@
 				RECIPES
 .container{:style=>"margin-top: 25px;"}
 	.row
-		- @recipes.each do |r|
-			.col-md-6.col-sm-12.text-right-responsive
-				%li
-					%a.text-right.recipe{:href=>recipe_path(r)}= r.title.downcase
-			.col-md-6.col-sm-12.text-left-responsive
-				%li
-					%a#fake
-						- if r.avg_rating.class == Float
-							= pluralize(r.avg_rating, 'star')
-						- else 
-							= r.avg_rating
+		- if @recipes.present?
+			- @recipes.each do |r|
+				.col-md-6.col-sm-12.text-right-responsive
+					%li
+						%a.text-right.recipe{:href=>recipe_path(r)}= r.title.downcase
+				.col-md-6.col-sm-12.text-left-responsive
+					%li
+						%a#fake
+							- if r.avg_rating.class == Float
+								= pluralize(r.avg_rating.round(2), 'star')
+							- else 
+								= r.avg_rating
+		- else
+			.col-md-12.col-sm-12
+				%p{:style=>"text-align:center;"} 
+					No 
+					= @category
+					recipes match your search.
+					%br
+					%br
+					= link_to "SEE ALL", category_path(@category), method: :get
