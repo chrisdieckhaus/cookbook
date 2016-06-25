@@ -1,8 +1,19 @@
 class RecipesController < ApplicationController
 	http_basic_authenticate_with name: "chris", password: "lovewhatyoudo", except: [:index, :show]
-	
+
 	def index
-		@recipes = Recipe.all
+		case params[:sort]
+		when 'title'
+			@recipes = Recipe.all.order("title #{sort_direction}")
+		when 'category'
+			@recipes = Recipe.all.order("category #{sort_direction}")
+		when 'rating'
+			#need to figure out how to sort this both ways
+			@recipes = Recipe.all.sort_by{|r| r.avg_rating }.reverse
+		else
+			@recipes = Recipe.all
+		end
+
 		if params[:search]
 			@recipes = Recipe.search(params[:search])
 			puts "recipes: #{@recipes}"
@@ -49,5 +60,9 @@ class RecipesController < ApplicationController
 	private
 		def recipe_params
 	    	params.require(:recipe).permit(:title, :rating, :category, :ingredients, :directions)
+		end
+
+		def sort_direction
+			%w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
 		end
 end

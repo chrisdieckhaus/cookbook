@@ -1,0 +1,17 @@
+- if @title == "Cookbook | Home"
+	.col-md-6.col-sm-12.text-right-responsive#sorty
+		%li
+			= sortable 'title', 'title', 'asc', @title
+	.col-md-2.col-sm-4#sorty{:style=>"text-align:center;"}
+		%li
+			= sortable 'category', 'category', 'asc', @title
+	.col-md-4.col-sm-8.text-left-responsive#sorty
+		%li
+			= sortable 'rating', 'rating', 'asc', @title
+- else
+	.col-md-6.col-sm-12.text-right-responsive#sorty
+		%li
+			= sortable 'title', 'title', 'asc', @title
+	.col-md-6.col-sm-12.text-left-responsive#sorty
+		%li
+			= sortable 'rating', 'rating', 'asc', @title

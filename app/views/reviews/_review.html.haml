@@ -4,10 +4,10 @@
 	%p
 		%span#avg-rating
 			average rating: 
-			- if @recipe.avg_rating.class == Float
+			- if @recipe.avg_rating > 0
 				= pluralize(@recipe.avg_rating.round(2), 'star')
 			- else 
-				= @recipe.avg_rating
+				NOT REVIEWED
 		
 
 - if @recipe.reviews.count == 0

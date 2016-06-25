@@ -7,7 +7,7 @@ class Recipe < ActiveRecord::Base
 
 	def avg_rating
 		if self.reviews.count.to_f == 0
-			return "not reviewed"
+			return 0
 		end
 		sum = 0
 		self.reviews.each do |review|

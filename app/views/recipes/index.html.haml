@@ -21,8 +21,10 @@
 		.col-md-12{:style=>"text-align:center;"}
 			%h1 cookbook
 .container{:style=>"margin-top: 25px;"}
-	.row
-		- if @recipes.present?
+	- if @recipes.present?
+		.row
+			= render "sort_bar"
+		.row
 			- @recipes.each do |r|
 				.col-md-6.col-sm-12.text-right-responsive
 					%li
@@ -33,12 +35,13 @@
 							= link_to r.category.upcase, category_path(r.category)
 				.col-md-4.col-sm-8.text-left-responsive
 					%li
-						%a#fake
-							- if r.avg_rating.class == Float
+						%a#fake{:style=>"font-size: 14px;"}
+							- if r.avg_rating > 0
 								= pluralize(r.avg_rating.round(2), 'star')
 							- else 
-								= r.avg_rating
-		- else
+								NOT YET REVIEWED
+	- else
+		.row
 			.col-md-12.col-sm-12
 				%p{:style=>"text-align:center;"} 
 					No recipes match your search.
