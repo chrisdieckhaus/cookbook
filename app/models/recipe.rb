@@ -18,6 +18,10 @@ class Recipe < ActiveRecord::Base
 	end
 
 	def self.search(search)
-		where("title LIKE ? OR ingredients LIKE ?", "%#{search}%", "%#{search}%")
+		if Rails.env.production?
+			where("title ILIKE ? OR ingredients ILIKE ?", "%#{search}%", "%#{search}%")
+		else
+			where("title LIKE ? OR ingredients LIKE ?", "%#{search}%", "%#{search}%")
+		end
 	end
 end
