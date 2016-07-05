@@ -1,14 +1,17 @@
 .col-md-3
 .col-md-6
-	= form_for([@recipe, @recipe.reviews.build]) do |f|
-		.form-group.text-left
-			%h4#add= f.label 'add a review'
-			= f.text_field :reviewer, :placeholder => 'name', :class =>"form-control"
-		.rev#forms
+	- if current_user
+		= form_for([@recipe, @recipe.reviews.build]) do |f|
 			.form-group.text-left
-				= f.number_field :rating, in: 1..5, :placeholder => 'rating', :class =>"form-control"
-			.form-group
-				= f.text_area :body, :class =>"form-control", :rows => 2, :placeholder =>"what did you think?"
-			.btn-group.pull-left#add
-				= f.submit :class =>"btn-mysubmit"
+				%h4#add= f.label 'add a review'
+				= f.text_field :reviewer, :placeholder => 'name', :class =>"form-control"
+			.rev#forms
+				.form-group.text-left
+					= f.number_field :rating, in: 1..5, :placeholder => 'rating', :class =>"form-control"
+				.form-group
+					= f.text_area :body, :class =>"form-control", :rows => 2, :placeholder =>"what did you think?"
+				.btn-group.pull-left#add
+					= f.submit :class =>"btn-mysubmit"
+	- else
+		= button_to 'PLEASE LOGIN TO ADD A REVIEW', login_path, method: :get, :class=>"btn btn-mysubmit"
 .col-md-3
