@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-	http_basic_authenticate_with name: "chris", password: "lovewhatyoudo", except: [:index, :show]
+	before_action :require_user, only: [:new, :edit, :destroy]
 
 	def index
 		case params[:sort]
