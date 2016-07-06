@@ -4,7 +4,6 @@
 		= form_for([@recipe, @recipe.reviews.build]) do |f|
 			.form-group.text-left
 				%h4#add= f.label 'add a review'
-				= f.text_field :reviewer, :placeholder => 'name', :class =>"form-control"
 			.rev#forms
 				.form-group.text-left
 					= f.number_field :rating, in: 1..5, :placeholder => 'rating', :class =>"form-control"

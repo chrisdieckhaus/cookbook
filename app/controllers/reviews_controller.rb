@@ -1,9 +1,10 @@
 class ReviewsController < ApplicationController
-	http_basic_authenticate_with name: "chris", password: "lovewhatyoudo", only: :destroy
 
 	def create
 	    @recipe = Recipe.find(params[:recipe_id])
 	    @review = @recipe.reviews.create(review_params)
+	    @review.user_id = current_user.id
+	    @review.save
 	    redirect_to recipe_path(@recipe)
 	end
 

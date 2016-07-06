@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   resources :categories
 
   get 'signup'  => 'users#new' 
-  resources :users
+  resources :users do 
+    resources :reviews
+  end
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
