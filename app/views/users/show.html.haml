@@ -1,0 +1,9 @@
+- @title = "#{@user.first_name} #{@user.last_name}"
+- @id = "user-show"
+
+.pull-left{:style=>"margin-top: 15px;"}
+	= link_to 'HOME', recipes_path, method: :get, style: "margin-left: 25px;"
+.container
+	.row
+		.col-md-12.col-sm-12{:style=>"text-align:center;"}
+			%h1= "#{@user.first_name.downcase} #{@user.last_name.downcase}" 

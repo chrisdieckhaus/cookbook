@@ -3,7 +3,8 @@
 
 .pull-left{:style=>"margin-top: 15px;"}
 	- if current_user
-		= button_to "LOGOUT #{current_user.first_name} #{current_user.last_name}", logout_path, method: :delete, style: "margin-left: 25px;", :class=>"btn btn-mysubmit"
+		= button_to "LOGOUT", logout_path, method: :delete, style: "margin-left: 25px;", :class=>"btn btn-mysubmit"
+		= button_to "#{current_user.first_name} #{current_user.last_name}", user_path(current_user), method: :get, style: "margin-left: 25px;", :class=>"btn btn-mysubmit"
 	- else
 		= button_to 'LOGIN', login_path, method: :get, style: "margin-left: 25px;", :class=>"btn btn-mysubmit"
 
