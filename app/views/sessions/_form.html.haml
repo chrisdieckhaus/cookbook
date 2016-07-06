@@ -1,6 +1,6 @@
 .container
-	= form_for :session, url: login_path do |f|
-		.row
+	.row
+		= form_for :session, url: login_path do |f|
 			.col-md-3.col-sm-12
 			.col-md-6.col-sm-12
 				.form-group
@@ -9,6 +9,4 @@
 					= f.password_field :password, :placeholder => 'password', :class =>"form-control"
 				.btn-group#add
 					= f.submit "login", :class =>"btn btn-mysubmit"
-					= @r
 			.col-md-3.col-sm-12
-

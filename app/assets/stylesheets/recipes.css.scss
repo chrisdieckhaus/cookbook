@@ -54,7 +54,7 @@ a:hover{
 	border-bottom: solid #333 1pt;
 }
 
-#home a#fake{
+#home a#fake, #user-show a#fake{
 	font-family: 'Open Sans';
 	letter-spacing: .65px;
 	font-size: 12px;
@@ -62,12 +62,12 @@ a:hover{
 	color: #757575;
 }
 
-#home a#fake:hover{
+#home a#fake:hover, #user-show a#fake:hover{
 	border: none;
 	color: #757575;
 }
 
-#recipe-show h4{
+#recipe-show h4, #recipe-show #review-user{
 	font-family: 'Vollkorn';
 	font-size: 24px;
 	padding-top: 25px;
@@ -93,9 +93,10 @@ a:hover{
 	margin-bottom: 20px;
 }
 
-#recipe-show label{
+#recipe-show label, #recipe-show #review-user{
 	text-transform: lowercase;
 	font-size: 20px;
+	color: #333333;
 }
 
 textarea{

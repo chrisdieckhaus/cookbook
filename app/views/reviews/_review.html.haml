@@ -24,7 +24,7 @@
 				%h4#add{:style=>"font-size:20px;"}
 					- if review.user_id
 						- user = User.find(review.user_id)
-						= "#{user.first_name.downcase} #{user.last_name.downcase}"
+						= link_to "#{user.first_name.downcase} #{user.last_name.downcase}", user_path(user), :id => "review-user"
 					- else
 						= review.reviewer.downcase
 					%span#rating= pluralize(review.rating, 'star')

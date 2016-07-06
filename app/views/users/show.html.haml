@@ -7,3 +7,32 @@
 	.row
 		.col-md-12.col-sm-12{:style=>"text-align:center;"}
 			%h1= "#{@user.first_name.downcase} #{@user.last_name.downcase}" 
+			= button_to "LOGOUT", logout_path, method: :delete, style: "margin-left: 25px;", :class=>"btn btn-mysubmit"
+.container{:style=>"margin-top: 25px;"}
+	.row
+		.col-md-12.col-sm-12{:style=>"text-align:center;"}
+			%h3 reviewed recipes
+.container
+	- if @reviews.present?
+		.row
+		- @reviews.each do |r|
+			- @recipe = Recipe.find(r.recipe_id)
+			.col-md-6.col-sm-12.text-right-responsive
+				%li
+					%a.text-right.recipe{:href=>recipe_path(@recipe)}= @recipe.title.downcase
+			.col-md-2.col-sm-4{:style=>"text-align:center;"}
+				%li
+					%a#fake
+						= link_to @recipe.category.upcase, category_path(@recipe.category)
+			.col-md-4.col-sm-8.text-left-responsive
+				%li
+					%a#fake{:style=>"font-size: 14px;"}
+						= pluralize(r.rating.round(2), 'star')
+	- else
+		.row
+			.col-md-12.col-sm-12
+				%p{:style=>"text-align:center;"} 
+					You have not reviewed any recipes.
+					%br
+					%br
+					= link_to 'RETURN HOME', recipes_path, method: :get
