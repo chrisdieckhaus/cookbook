@@ -1,0 +1,16 @@
+- @title = "Cookbook | Users"
+- @id = "user-show"
+
+.pull-left{:style=>"margin-top: 15px;"}
+	= link_to 'HOME', recipes_path, method: :get, style: "margin-left: 25px;"
+.container
+	.row
+		.col-md-12.col-sm-12{:style=>"text-align:center;"}
+			%h1 all users 
+.container{:style=>"margin-top: 25px;"}
+	.row
+	- @users.each do |u|
+		.col-md-12.col-sm-12{:style=>"text-align:center;"}
+			%li
+				%a#fake
+					= link_to "#{u.first_name} #{u.last_name}", user_path(u)
