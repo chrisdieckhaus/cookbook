@@ -31,7 +31,7 @@
 					%span#rating= review.created_at.strftime('%-m/%-d/%y')
 				- body = simple_format(review.body, :style=>"line-height: 150%; margin-bottom: 20px; margin-top:10px; padding-left: 12px;")
 				%p#add= body
-				- if review.user_id == current_user.id
+				- if current_user and review.user_id == current_user.id
 					.btn-group.pull-left#add
 						= button_to 'Remove Review', [review.recipe, review], method: :delete, :class => "btn-mysubmit"
 				%br
