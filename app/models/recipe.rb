@@ -18,22 +18,19 @@ class Recipe < ActiveRecord::Base
 	end
 
 	def self.search(search)
-		if Rails.env.production?
-			where("title ILIKE ? OR ingredients ILIKE ?", "%#{search}%", "%#{search}%")
-		else
-			users = User.where("first_name LIKE ? OR last_name LIKE ?", "%#{search}%", "%#{search}%")
-			#u is collection of users
-			uids = users.map{|u| u.id}
-			q1 = ""
-			q2 = []
-			uids.each do |u|
-				q1 += "user_id = ? OR "
-				q2.push("#{u}")
-			end
-			q1 += "title LIKE ? OR ingredients LIKE ?"
-			q2.push("%#{search}%")
-			q2.push("%#{search}%")
-			where(q1, *q2)
+		like = Rails.env.production? ? "ILIKE" : "LIKE"
+		users = User.where("first_name #{like} ? OR last_name #{like} ?", "%#{search}%", "%#{search}%")
+		#u is collection of users
+		uids = users.map{|u| u.id}
+		q1 = ""
+		q2 = []
+		uids.each do |u|
+			q1 += "user_id = ? OR "
+			q2.push("#{u}")
 		end
+		q1 += "title #{like} ? OR ingredients #{like} ?"
+		q2.push("%#{search}%")
+		q2.push("%#{search}%")
+		where(q1, *q2)
 	end
 end
