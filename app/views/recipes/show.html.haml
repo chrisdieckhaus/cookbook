@@ -12,6 +12,11 @@
 	.row
 		.col-md-12{:style=>"text-align:center;"}
 			%p= @recipe.category.upcase if @recipe.category != nil
+	.row
+		.col-md-12{:style=>"text-align:center;"}
+			- if @recipe.user_id != nil
+				- u = User.find(@recipe.user_id) 
+				= link_to "ADDED BY #{u.first_name.upcase} #{u.last_name.upcase}", user_path(u), :id => "recipe-user"
 .container{:style=>"margin-top: 25px;"}
 	.row
 		.col-md-6.col-sm-12
