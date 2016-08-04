@@ -31,6 +31,9 @@ class RecipesController < ApplicationController
 
 	def edit
 		@recipe = Recipe.find(params[:id])
+		unless current_user.admin or @recipe.user_id == current_user.id
+			redirect_to @recipe
+		end
 	end
 
 	def create

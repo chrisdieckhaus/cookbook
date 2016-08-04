@@ -3,8 +3,11 @@
 
 .pull-left{:style=>"margin-top: 15px;"}
 	= link_to 'BACK', recipes_path, method: :get, style: "margin-left: 25px;"
-.pull-right{:style=>"margin-top: 15px;"}
-	= link_to 'EDIT', edit_recipe_path(@recipe), method: :get, style: "margin-right: 25px;"
+
+- if current_user
+	- if current_user.admin or (@recipe.user_id != nil and User.find(@recipe.user_id) == current_user)
+		.pull-right{:style=>"margin-top: 15px;"}
+			= link_to 'EDIT', edit_recipe_path(@recipe), method: :get, style: "margin-right: 25px;"
 .container
 	.row
 		.col-md-12{:style=>"text-align:center;"}
