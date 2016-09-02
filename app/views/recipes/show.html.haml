@@ -28,7 +28,7 @@
 			.col-md-2
 			.col-md-8.pull-right
 				%p
-					- @recipe.ingredients.split(",").each do |ingred|
+					- @recipe.ingredients.split("\n").each do |ingred|
 						%li= ingred.downcase
 			.col-md-2
 		.col-md-6.col-sm.12
