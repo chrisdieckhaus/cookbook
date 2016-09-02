@@ -3,7 +3,31 @@ class Recipe < ActiveRecord::Base
 	validates :title, presence: true
 	validates :ingredients, presence: true
 	validates :directions, presence: true
-	#validates :category, presence: true
+	validates :category, presence: true
+	CATEGORIES = [
+		'appetizer',
+		'beef',
+		'bread',
+		'breakfast',
+		'burger',
+		'chicken',
+		'dessert',
+		'drink',
+		'fruit',
+		'pasta',
+		'pizza',
+		'pork',
+		'rice',
+		'salad',
+		'sandwich',
+		'sauce',
+		'seafood',
+		'snacks',
+		'soup',
+		'tacos',
+		'vegetable',
+		'vegetarian'
+	]
 
 	def avg_rating
 		if self.reviews.count.to_f == 0

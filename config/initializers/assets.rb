@@ -8,3 +8,4 @@ Rails.application.config.assets.version = '1.1'
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( bootstrap.css )
 Rails.application.config.assets.precompile += %w( jquery_ujs.js )
+Rails.application.config.assets.precompile += %w( recipes.js )

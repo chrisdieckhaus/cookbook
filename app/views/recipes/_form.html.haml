@@ -1,16 +1,18 @@
 .container
 	= form_for :recipe, url: recipes_path do |f|
+		- if @recipe && @recipe.errors.any?
+			.row
+				.col-sm-12
+					%ul.error
+						- @recipe.errors.full_messages.each do |msg|
+							%li.error= msg.downcase
 		.row
-			- if @recipe && @recipe.errors.any?
-				%ul
-					- @recipe.errors.full_messages.each do |msg|
-						%li= msg
 			.col-md-3.col-sm-12
 			.col-md-6.col-sm-12
 				.form-group
 					= f.text_field :title, :placeholder => 'title', :class =>"form-control"
 				.form-group
-					= f.text_field :category, :placeholder => 'category', :class =>"form-control"
+					= f.collection_select :category, Recipe::CATEGORIES, :to_s, :to_s, {:prompt => "category"}, {:class =>"form-control custom-select"}
 				.form-group
 					= f.text_area :ingredients, :placeholder => 'ingredients', :class =>"form-control", :rows=>10
 				.form-group
