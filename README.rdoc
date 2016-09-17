@@ -1,6 +1,3 @@
 == Cookbook
 
 A site for storing and reviewing recipes. To add a recipe, sign up or login as a user. 
-
-
-Sup Dawg. This is Will.
