@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 	def new
-		@return_id = params[:recipe_id]
+		@return_id = params[:return_id]
 	end
 
 	def create
@@ -11,7 +11,11 @@ class SessionsController < ApplicationController
 			if return_id.empty?
 				redirect_to recipes_path
 			else 
-				redirect_to recipe_path(return_id)
+				if return_id == "new"
+					redirect_to new_recipe_path 
+				else 
+					redirect_to recipe_path(return_id)
+				end
 			end
 		else
 			redirect_to login_path
@@ -20,6 +24,6 @@ class SessionsController < ApplicationController
 
 	def destroy 
  		session[:user_id] = nil 
-		redirect_to recipe_path 
+		redirect_to recipes_path 
 	end
 end

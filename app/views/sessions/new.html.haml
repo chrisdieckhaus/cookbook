@@ -7,6 +7,7 @@
 	.row
 		.col-md-12.col-sm-12{:style=>"text-align:center;"}
 			%h1 login
+			= @return_id
 = render 'form'
 .container{:style=>"margin-top: 25px;"}
 	.row
@@ -14,4 +15,4 @@
 			%h3{:style=>"margin-bottom: 10px;"} don't have an account?
 		.col-md-12.col-sm-12{:style=>"text-align:center;"}
 			.btn-group#add
-				= link_to "SIGN UP", signup_path, :method => :get
+				= button_to "SIGN UP", signup_path, :method => :get, :class => "btn btn-mysubmit", :params => {return_id: @return_id}

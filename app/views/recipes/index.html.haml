@@ -8,7 +8,7 @@
 		= button_to 'LOGIN', login_path, method: :get, style: "margin-left: 25px;", :class=>"btn btn-mysubmit"
 
 .pull-right{:style=>"margin-top: 15px;"}
-	= button_to 'ADD RECIPE', new_recipe_path, method: :get, style: "margin-right: 25px;", :class=>"btn btn-mysubmit"
+	= button_to 'ADD RECIPE', new_recipe_path, method: :get, style: "margin-right: 25px;", :class=>"btn btn-mysubmit", :params => {:return_id => "new"}
 %br
 .container
 	.row

@@ -11,7 +11,8 @@ class ApplicationController < ActionController::Base
   	end
 
   	def require_user 
-		redirect_to login_path unless current_user 
+  		@return_id = params[:return_id]
+		redirect_to "/login?return_id=#{@return_id}" unless current_user 
 	end
 
 	private
