@@ -1,18 +1,18 @@
 class UsersController < ApplicationController
 	def new
 		@user = User.new
-		@return_id = params[:return_id]
+		@return_to = params[:return_to]
 	end
 
 	def create 
 		@user = User.new(user_params) 
-		return_id = params[:user][:return_id]
+		return_to = params[:user][:return_to]
 		if @user.save 
 			session[:user_id] = @user.id 
-			if return_id.empty?
+			if return_to.empty?
 				redirect_to recipes_path
 			else
-				redirect_to recipe_path(return_id)
+				redirect_to return_to
 			end
 		else 
 			redirect_to signup_path

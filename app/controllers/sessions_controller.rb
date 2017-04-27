@@ -1,20 +1,21 @@
 class SessionsController < ApplicationController
 	def new
-		@return_id = params[:return_id]
+		@return_to = params[:return_to]
 	end
 
 	def create
-		return_id = params[:session][:return_id]
+		return_to = params[:session][:return_to]
+		puts return_to
 		@user = User.find_by_email(params[:session][:email])
 		if @user && @user.authenticate(params[:session][:password])
 			session[:user_id] = @user.id
-			if return_id.empty?
+			if return_to.empty?
 				redirect_to recipes_path
 			else 
-				if return_id == "new"
+				if return_to == "new"
 					redirect_to new_recipe_path 
 				else 
-					redirect_to recipe_path(return_id)
+					redirect_to return_to
 				end
 			end
 		else

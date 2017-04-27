@@ -5,10 +5,10 @@
 	- if current_user
 		= button_to "#{current_user.first_name} #{current_user.last_name}", user_path(current_user), method: :get, style: "margin-left: 25px;", :class=>"btn btn-mysubmit"
 	- else
-		= button_to 'LOGIN', login_path, method: :get, style: "margin-left: 25px;", :class=>"btn btn-mysubmit"
+		= button_to 'LOGIN', login_path, method: :get, style: "margin-left: 25px;", :class=>"btn btn-mysubmit", :params => {return_to: request.fullpath}
 
 .pull-right{:style=>"margin-top: 15px;"}
-	= button_to 'ADD RECIPE', new_recipe_path, method: :get, style: "margin-right: 25px;", :class=>"btn btn-mysubmit", :params => {:return_id => "new"}
+	= button_to 'ADD RECIPE', new_recipe_path, method: :get, style: "margin-right: 25px;", :class=>"btn btn-mysubmit", :params => {:return_to => "/recipes/new"}
 %br
 .container
 	.row

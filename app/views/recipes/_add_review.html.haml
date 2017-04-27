@@ -12,5 +12,5 @@
 				.btn-group.pull-left#add
 					= f.submit :class =>"btn-mysubmit"
 	- else
-		= button_to 'PLEASE LOGIN TO ADD A REVIEW', login_path, method: :get, :class=>"btn btn-mysubmit", :params => {return_id: @recipe.id}
+		= button_to 'PLEASE LOGIN TO ADD A REVIEW', login_path, method: :get, :class=>"btn btn-mysubmit", :params => {return_to: request.fullpath}
 .col-md-3
